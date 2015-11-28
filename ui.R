@@ -13,8 +13,8 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                                    "Twenty20" = "TT"), 
                                                     inline=TRUE,
                                                     selected = "Test"),
-                                       uiOutput("players"),
-                                       uiOutput("functions") 
+                                       uiOutput("batsmanList"),
+                                       uiOutput("batsmanFunctionList") 
                                       
                                 ),
                                
@@ -38,16 +38,10 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                                    "Twenty20" = "TT"), 
                                                     inline=TRUE,
                                                     selected = "Test"),
-                                       selectizeInput(
-                                           "bowler", label = "Players", choices = NULL,multiple=FALSE,selected="tendulkar",
-                                           options = list(create = TRUE,placeholder = 'Choose the player')
+                                       uiOutput("bowlerList"),
+                                       uiOutput("bowlerFunctionList") 
                                            
-                                       ),
-                                       selectizeInput(
-                                           "bowlerFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
-                                           options = list(create = TRUE,placeholder = 'Choose the chart')
-                                           
-                                       )
+                                       
                                        
                                        
                                 ),
@@ -71,16 +65,8 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                                   "Twenty20" = "TT"), 
                                                    inline=TRUE,
                                                    selected = "Test"),
-                                      selectizeInput(
-                                          "batsmen", label = "Players", choices = NULL,multiple=TRUE,selected="tendulkar",
-                                          options = list(create = TRUE,placeholder = 'Choose the player')
-                                          
-                                      ),
-                                      selectizeInput(
-                                          "batsmenFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
-                                          options = list(create = TRUE,placeholder = 'Choose the chart')
-                                          
-                                      )
+                                      uiOutput("relBatsmen"),
+                                      uiOutput("relBatsmenFunction") 
                                       
                                       
                                ),
@@ -104,16 +90,10 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                                   "Twenty20" = "TT"), 
                                                    inline=TRUE,
                                                    selected = "Test"),
-                                      selectizeInput(
-                                          "bowlers", label = "Players", choices = NULL,multiple=TRUE,selected="tendulkar",
-                                          options = list(create = TRUE,placeholder = 'Choose the player')
+                                      uiOutput("relBowlers"),
+                                      uiOutput("relBowlersFunction") 
                                           
-                                      ),
-                                      selectizeInput(
-                                          "bowlersFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
-                                          options = list(create = TRUE,placeholder = 'Choose the chart')
-                                          
-                                      )
+                                    
                                       
                                       
                                ),

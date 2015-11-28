@@ -37,16 +37,99 @@ shinyServer(function(input, output,session) {
             player = ttBatsman
             f = funcsODITT
         }
-    output$players = renderUI({
-        selectInput('batsman', 'Columns',choices=player,selected=input$batsman)
-    })
-    output$functions = renderUI({
-        selectInput('batsmanFunc', 'Column1',choices=f,selected=input$batsmanFunc)
-    })
- 
-    print(input$batsman)
-    analyzeBatsman(input$batsman,input$batsmanFunc,input$matchType)
+        output$batsmanList = renderUI({
+            selectInput('batsman', 'Choose batsman',choices=player,selected=input$batsman)
+        })
+        output$batsmanFunctionList = renderUI({
+            selectInput('batsmanFunc', 'Choose chart type',choices=f,selected=input$batsmanFunc)
+        })
+        
+        print(input$batsman)
+        analyzeBatsman(input$batsman,input$batsmanFunc,input$matchType)
     
+    })
+    
+    # Analyze and display bowler's plots
+    output$bowlerPlot <- renderPlot({  
+        
+        
+        # Include the list to display in the drop downs on choice of matchType
+        if(input$matchType1 == "Test"){
+            player = testBowler
+            f1 = funcs1
+        } else if(input$matchType1 == "ODI"){
+            player = odiBowler
+            f1 = funcs1ODI
+        }
+        else {
+            player = ttBowler
+            f1 = funcs1TT
+        }
+        output$bowlerList = renderUI({
+            selectInput('bowler', 'Choose bowler',choices=player,selected=input$bowler)
+        })
+        output$bowlerFunctionList = renderUI({
+            selectInput('bowlerFunc', 'Choose chart type',choices=f1,selected=input$bowlerFunc)
+        })
+        
+        analyzeBowler(input$bowler,input$bowlerFunc,input$matchType1)
+        
+        
+    })
+    
+    output$relBatsmenPlot <- renderPlot({  
+        # Include the list to display in the drop downs on choice of matchType
+        if(input$matchType3 == "Test"){
+            player = testBatsman
+            f2 = funcsRelBatsman
+        } else if(input$matchType3 == "ODI"){
+            player = odiBatsman
+            f2 = funcsRelBatsman
+        }
+        else {
+            player = ttBatsman
+            f2 = funcsRelBatsman
+        }
+        output$relBatsmen = renderUI({
+            selectInput('batsmen', 'Choose batsmen',choices=player,selected=input$batsmen,multiple=TRUE)
+        })
+        output$relBatsmenFunction = renderUI({
+            selectInput('batsmenFunc', 'Choose chart type',choices=f2,selected=input$batsmenFunc)
+        })
+        
+        if(length(input$batsmen != 0)){
+            relBatsmenPerf(input$batsmen,input$batsmenFunc,input$matchType3)
+        }
+        
+        
+    })
+    
+    # Set the drop down players, functions based on the match type
+    output$relBowlersPlot <- renderPlot({  
+        # Include the list to display in the drop downs on choice of matchType
+        if(input$matchType4 == "Test"){
+            player = testBowler
+            f3 = funcsRelBowlerTestODI
+        } else if(input$matchType4 == "ODI"){
+            player = odiBowler
+            f3 = funcsRelBowlerTestODI
+        }
+        else {
+            player = ttBowler
+            f3 = funcsRelBowlerTT
+        }
+        output$relBowlers = renderUI({
+            selectInput('bowlers', 'Choose bowlers',choices=player,selected=input$bowlers,multiple=TRUE)
+        })
+        output$relBowlersFunction = renderUI({
+            selectInput('bowlersFunc', 'Choose chart type',choices=f3,selected=input$bowlersFunc)
+        })
+        if(length(input$bowlers != 0)){
+            
+            relBowlersPerf(input$bowlers,input$bowlersFunc,input$matchType4)
+        }
+        
+        
     })
     
     
