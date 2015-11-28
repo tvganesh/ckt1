@@ -1,5 +1,14 @@
+#########################################################################################################
+#
+# Title : Sixer - cricketr's Shiny avatar
+# Designed and developed by: Tinniam V Ganesh
+# Date : 28 Nov 2015
+# File: relBowlerPer.R
+# More details: https://gigadom.wordpress.com/
+#
+#########################################################################################################
 relBowlersPerf <- function(bowlers,func,matchType) {
-    
+    # Map names to files
     file <- NULL
     if(matchType == "Test") {
         
@@ -21,10 +30,7 @@ relBowlersPerf <- function(bowlers,func,matchType) {
             
         }
     }
-    cat(file)
-    
-    
-    cat(file)
+    #Call function
     if(matchType == "Test"){
         if(func =="Relative Bowling Economy Rate"){
             relativeBowlingER(file,bowlers)
@@ -34,7 +40,6 @@ relBowlersPerf <- function(bowlers,func,matchType) {
         } 
         
     } 
-    
     
     if(matchType == "ODI") {
         if(func =="Relative Bowling Economy Rate"){

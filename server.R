@@ -1,18 +1,17 @@
 #########################################################################################################
 #
-# Title : Literacy in India : A DeepR dive
+# Title : Sixer - cricketr's Shiny avatar
 # Designed and developed by: Tinniam V Ganesh
-# Date : 5 Nov 2015
+# Date : 28 Nov 2015
 # File: server.R
 # More details: https://gigadom.wordpress.com/
 #
 #########################################################################################################
 library(shiny)
-#library(shinyjs)
-#library(devtools)
-#install_github("tvganesh/cricketr")
 library(cricketr)
 
+
+# Source files
 source("analyzeBatsman.R")
 source("analyzeBowler.R")
 source("relBatsmenPerf.R")
@@ -21,11 +20,10 @@ source("definitions.R")
 
 
 shinyServer(function(input, output,session) {
-   
-   
+    
     # Analyze and display batsmen plots
     output$batsmanPlot <- renderPlot({  
-        # Include the list to display in the drop downs on choice of matchType
+        # Setup dynamic UI
         if(input$matchType == "Test"){
             player = testBatsman
             f = funcs
@@ -37,6 +35,7 @@ shinyServer(function(input, output,session) {
             player = ttBatsman
             f = funcsODITT
         }
+        # Dynamic list update. Set the selected so that it does not flip to the first!!
         output$batsmanList = renderUI({
             selectInput('batsman', 'Choose batsman',choices=player,selected=input$batsman)
         })
@@ -44,9 +43,9 @@ shinyServer(function(input, output,session) {
             selectInput('batsmanFunc', 'Choose chart type',choices=f,selected=input$batsmanFunc)
         })
         
-        print(input$batsman)
+        # Call the plots for the batsman
         analyzeBatsman(input$batsman,input$batsmanFunc,input$matchType)
-    
+        
     })
     
     # Analyze and display bowler's plots
@@ -65,6 +64,7 @@ shinyServer(function(input, output,session) {
             player = ttBowler
             f1 = funcs1TT
         }
+        # Render dynamic UI
         output$bowlerList = renderUI({
             selectInput('bowler', 'Choose bowler',choices=player,selected=input$bowler)
         })
@@ -76,7 +76,7 @@ shinyServer(function(input, output,session) {
         
         
     })
-    
+    # Analyze and display relative batsman plots
     output$relBatsmenPlot <- renderPlot({  
         # Include the list to display in the drop downs on choice of matchType
         if(input$matchType3 == "Test"){
@@ -90,6 +90,7 @@ shinyServer(function(input, output,session) {
             player = ttBatsman
             f2 = funcsRelBatsman
         }
+        # Set up for multiple selection
         output$relBatsmen = renderUI({
             selectInput('batsmen', 'Choose batsmen',choices=player,selected=input$batsmen,multiple=TRUE)
         })
@@ -104,9 +105,9 @@ shinyServer(function(input, output,session) {
         
     })
     
-    # Set the drop down players, functions based on the match type
+    # Analyze and display relative bowler plots
     output$relBowlersPlot <- renderPlot({  
-        # Include the list to display in the drop downs on choice of matchType
+        
         if(input$matchType4 == "Test"){
             player = testBowler
             f3 = funcsRelBowlerTestODI
@@ -118,6 +119,8 @@ shinyServer(function(input, output,session) {
             player = ttBowler
             f3 = funcsRelBowlerTT
         }
+        
+        # Setup for multiple input
         output$relBowlers = renderUI({
             selectInput('bowlers', 'Choose bowlers',choices=player,selected=input$bowlers,multiple=TRUE)
         })

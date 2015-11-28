@@ -1,7 +1,14 @@
+#########################################################################################################
+#
+# Title : Sixer - cricketr's Shiny avatar
+# Designed and developed by: Tinniam V Ganesh
+# Date : 28 Nov 2015
+# File: bowlers.R
+# More details: https://gigadom.wordpress.com/
+#
+#########################################################################################################
 analyzeBowler <- function(name,func,matchType) {
-  
-    
-    cat("name=",name)
+    # Map bowler name
     bowler <- mapBowler(name)
     if(matchType == "Test") {
         file <- paste("./data/test/bowler/",bowler,".csv",sep="")
@@ -16,38 +23,39 @@ analyzeBowler <- function(name,func,matchType) {
         filesp <- paste("./data/tt/bowler/",bowler,"sp.csv",sep="")
         print(file)
     }
-        
-        if(func =="Bowler's Avg Wickets at Ground"){
-            print("Here1")
-            bowlerAvgWktsGround(file,name)
-        } else if (func == "Bowler's Avg Wicket against opposition"){
-            bowlerAvgWktsOpposition(file,name)
-        } else if (func == "Contribution to wins & losses"){
-            bowlerContributionWonLost(filesp,name)
-        } else if (func == "Bowler's Economy Rate"){
-            bowlerEconRate(file,name)
-        } else if (func == "Bowler's Wickets performance"){
-            bowlerHistWickets(file,name)
-        } else if (func == "Bowler's Moving Average"){
-            bowlerMovingAverage(file,name)
-        } else if (func == "Bowler's Perf. Forecast"){
-            bowlerPerfForecast(file,name)
-        } else if (func == "Bowler's Perf. Home-Away"){
-            bowlerPerfHomeAway(filesp,name)
-        } else if (func == "Bowler's Wickets-Runs plot"){
-            bowlerWktsRunsPlot(file,name)
-        } else if (func == "Bowler's Wickets Freq Percent"){
-            bowlerWktsFreqPercent(file,name)
-        } else if (func == "Bowler's Wickets-Runs plot"){
-            bowlerWktsRunsPlot(file,name)
-        } else if (func == "Check Bowler Form status"){
-            checkBowlerInForm(file,name)
-        } else if (func == "Bowler Wicket Rate"){
-            bowlerWktRateTT(file,name)
-        } 
-        
+    
+    # Call appropriate cricketr function
+    if(func =="Bowler's Avg Wickets at Ground"){
+        bowlerAvgWktsGround(file,name)
+    } else if (func == "Bowler's Avg Wicket against opposition"){
+        bowlerAvgWktsOpposition(file,name)
+    } else if (func == "Contribution to wins & losses"){
+        bowlerContributionWonLost(filesp,name)
+    } else if (func == "Bowler's Economy Rate"){
+        bowlerEconRate(file,name)
+    } else if (func == "Bowler's Wickets performance"){
+        bowlerHistWickets(file,name)
+    } else if (func == "Bowler's Moving Average"){
+        bowlerMovingAverage(file,name)
+    } else if (func == "Bowler's Perf. Forecast"){
+        bowlerPerfForecast(file,name)
+    } else if (func == "Bowler's Perf. Home-Away"){
+        bowlerPerfHomeAway(filesp,name)
+    } else if (func == "Bowler's Wickets-Runs plot"){
+        bowlerWktsRunsPlot(file,name)
+    } else if (func == "Bowler's Wickets Freq Percent"){
+        bowlerWktsFreqPercent(file,name)
+    } else if (func == "Bowler's Wickets-Runs plot"){
+        bowlerWktsRunsPlot(file,name)
+    } else if (func == "Check Bowler Form status"){
+        checkBowlerInForm(file,name)
+    } else if (func == "Bowler Wicket Rate"){
+        bowlerWktRateTT(file,name)
+    } 
+    
 }   
 
+# Map bowler names to file
 mapBowler <- function(name){
     bowler <- NULL
     if(name == "Anil Kumble"){

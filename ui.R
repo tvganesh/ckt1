@@ -1,10 +1,18 @@
-# Define UI for application that draws a histogram
+#########################################################################################################
+#
+# Title : Sixer - cricketr's Shiny avatar
+# Designed and developed by: Tinniam V Ganesh
+# Date : 28 Nov 2015
+# File: ui.R
+# More details: https://gigadom.wordpress.com/
+#
+#########################################################################################################
+
 shinyUI(navbarPage("cricketr analyzes Cricketers!",
+                   # Batsman tab
                    tabPanel("Analyze batsman",
-                            # Application title
                             titlePanel("Analyze batsman"),
-                            
-                            
+  
                             fluidRow(
                                 column(3,
                                        radioButtons("matchType", label = h3("Match type"),
@@ -17,15 +25,14 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                        uiOutput("batsmanFunctionList") 
                                       
                                 ),
-                               
-                                
-                                
+  
                                 # Show a plot of the generated distribution        
                                 column(6,
                                        plotOutput("batsmanPlot")
                                 )                               
                             )
                    ),
+                   # Bowlers tab
                   tabPanel("Analyze bowlers",
                             # Application title
                             titlePanel("Analyze bowlers"),
@@ -40,10 +47,6 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                     selected = "Test"),
                                        uiOutput("bowlerList"),
                                        uiOutput("bowlerFunctionList") 
-                                           
-                                       
-                                       
-                                       
                                 ),
                                 
                                 # Show a plot of the generated distribution        
@@ -53,6 +56,7 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                             )    
                            
                    ),
+                  #Relative batsmen plot
                   tabPanel("Relative performance batsman",
                            # Application title
                            titlePanel("Relative performance batsman"),
@@ -67,8 +71,6 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                    selected = "Test"),
                                       uiOutput("relBatsmen"),
                                       uiOutput("relBatsmenFunction") 
-                                      
-                                      
                                ),
                                
                                # Show a plot of the generated distribution        
@@ -78,6 +80,7 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                            )    
                            
                   ),
+                  # Relative bowlers plot
                   tabPanel("Relative performance of bowlers",
                            # Application title
                            titlePanel("Relative performance of bowlers"),
@@ -92,10 +95,6 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                    selected = "Test"),
                                       uiOutput("relBowlers"),
                                       uiOutput("relBowlersFunction") 
-                                          
-                                    
-                                      
-                                      
                                ),
                                
                                # Show a plot of the generated distribution        

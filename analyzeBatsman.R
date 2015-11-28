@@ -1,7 +1,15 @@
+#########################################################################################################
+#
+# Title : Sixer - cricketr's Shiny avatar
+# Designed and developed by: Tinniam V Ganesh
+# Date : 28 Nov 2015
+# File: analyzeBatsman.R
+# More details: https://gigadom.wordpress.com/
+#
+#########################################################################################################
+
 analyzeBatsman <- function(name,func,matchType) {
-   
-    # Update the drop down with all batsman
-    cat("name=",name)
+    # Read file from appropriate directory
     batsman <- mapBatsman(name)
     if(matchType == "Test") {
         file <- paste("./data/test/batsman/",batsman,".csv",sep="")
@@ -17,6 +25,7 @@ analyzeBatsman <- function(name,func,matchType) {
         print(file)
     }
     
+    # Call necessary function from cricketr package
     if(func =="4s & 6s of batsman"){
         batsman4s6s(file,name)
     } else if (func == "4s of batsman"){
@@ -63,6 +72,7 @@ analyzeBatsman <- function(name,func,matchType) {
     
 }
 
+# Function to map name to file name
 mapBatsman <- function(name){
     batsman <- NULL
     if(name == "Sachin Tendulkar"){

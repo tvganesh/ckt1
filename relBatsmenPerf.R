@@ -1,6 +1,14 @@
+#########################################################################################################
+#
+# Title : Sixer - cricketr's Shiny avatar
+# Designed and developed by: Tinniam V Ganesh
+# Date : 28 Nov 2015
+# File: relBatsmanPer.R
+# More details: https://gigadom.wordpress.com/
+#
+#########################################################################################################
 relBatsmenPerf <- function(batsmen,func,matchType) {
-    cat("name=",batsmen)
-    
+    # Map batsmen names
     file <- NULL
     if(matchType == "Test") {
         
@@ -22,10 +30,8 @@ relBatsmenPerf <- function(batsmen,func,matchType) {
             
         }
     }
-    cat(file)
-    
-    
-    cat(file)
+
+    # Call function
     if(func =="Relative Batsman Strike Rate"){
         if(matchType == "Test"){
              relativeBatsmanSR(file,batsmen)
