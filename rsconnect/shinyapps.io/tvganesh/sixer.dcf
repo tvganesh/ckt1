@@ -1,8 +1,8 @@
 name: sixer
 account: tvganesh
 server: shinyapps.io
-bundleId: 320291
+bundleId: 320373
 url: https://tvganesh.shinyapps.io/sixer
-when: 1448715066.02562
+when: 1448731593.57336
 asMultiple: FALSE
 asStatic: FALSE
